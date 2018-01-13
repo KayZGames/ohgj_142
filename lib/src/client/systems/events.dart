@@ -1,5 +1,5 @@
 import 'package:gamedev_helpers/gamedev_helpers.dart';
-import 'package:templatetest/src/shared/components.dart';
+import 'package:ohgj_142/src/shared/components.dart';
 
 class ControllerSystem extends GenericInputHandlingSystem {
   Mapper<Controller> cm;

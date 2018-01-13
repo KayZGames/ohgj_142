@@ -6,3 +6,5 @@ class Controller extends Component {
   Controller(
       {this.up: false, this.down: false, this.left: false, this.right: false});
 }
+
+class Boat extends Component {}
