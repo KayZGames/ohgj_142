@@ -87,8 +87,8 @@ class WaterDragSystem extends EntityProcessingSystem {
     final a = am[entity];
 
     if (p.y >= 0.1 && p.y <= 0.9) {
-      v.x *= 0.9;
-      v.y *= 0.9;
+      v.x *= 0.85;
+      v.y *= 0.85;
     }
 
     if (p.x < 0.0 && v.x < 0.0) {
