@@ -130,6 +130,7 @@ class TreasureCollectionSystem extends EntityProcessingSystem {
 class TreasureDeliveringSystem extends EntityProcessingSystem {
   Mapper<Position> pm;
   Mapper<Treasure> treasureMapper;
+  Mapper<Boat> bm;
   TagManager tm;
 
   TreasureDeliveringSystem() : super(new Aspect.forAllOf([Boat, Position]));
@@ -147,6 +148,7 @@ class TreasureDeliveringSystem extends EntityProcessingSystem {
         ..changedInWorld();
       world.createAndAddEntity(
           [new Treasure(), new Position(random.nextDouble(), 0.9)]);
+      bm[entity].score++;
     }
   }
 }

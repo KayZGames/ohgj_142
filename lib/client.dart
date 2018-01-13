@@ -48,7 +48,8 @@ class Game extends GameBase {
         new BoatRenderingSystem(ctx),
         new DiverRenderingSystem(ctx),
         new TreasureRenderingSystem(ctx),
-        new FpsRenderingSystem(ctx, fillStyle: 'black'),
+        new ScoreRenderingSystem(ctx),
+//        new FpsRenderingSystem(ctx, fillStyle: 'black'),
       ],
       GameBase.physics: [
         // add at least one

@@ -7,7 +7,10 @@ class Controller extends Component {
       {this.up: false, this.down: false, this.left: false, this.right: false});
 }
 
-class Boat extends Component {}
+class Boat extends Component {
+  int score;
+  Boat([this.score = 0]);
+}
 
 class Diver extends Component {}
 

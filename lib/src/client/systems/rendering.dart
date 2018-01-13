@@ -76,13 +76,13 @@ class DiverRenderingSystem extends EntityProcessingSystem {
   }
 }
 
-
 class TreasureRenderingSystem extends EntityProcessingSystem {
   Mapper<Position> pm;
   CameraManager cm;
   CanvasRenderingContext2D ctx;
 
-  TreasureRenderingSystem(this.ctx) : super(new Aspect.forAllOf([Position, Treasure]));
+  TreasureRenderingSystem(this.ctx)
+      : super(new Aspect.forAllOf([Position, Treasure]));
 
   @override
   void initialize() {
@@ -96,5 +96,20 @@ class TreasureRenderingSystem extends EntityProcessingSystem {
       ..fillStyle = 'yellow'
       ..fillRect(
           p.x * cm.width, p.y * cm.height, cm.width * 0.01, cm.height * 0.01);
+  }
+}
+
+class ScoreRenderingSystem extends EntityProcessingSystem {
+  Mapper<Boat> bm;
+  CanvasRenderingContext2D ctx;
+  ScoreRenderingSystem(this.ctx) : super(new Aspect.forAllOf([Boat]));
+
+  @override
+  void processEntity(Entity entity) {
+    final score = bm[entity].score;
+    ctx
+      ..fillStyle = 'black'
+      ..font = '20px Verdana'
+      ..fillText('$score treasures secured', 10, 10);
   }
 }
