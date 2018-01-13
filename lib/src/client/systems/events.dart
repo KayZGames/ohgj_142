@@ -2,23 +2,23 @@ import 'package:gamedev_helpers/gamedev_helpers.dart';
 import 'package:ohgj_142/src/shared/components.dart';
 
 class ControllerSystem extends GenericInputHandlingSystem {
-  Mapper<Controller> cm;
+  Mapper<Acceleration> am;
 
-  ControllerSystem() : super(new Aspect.forAllOf([Controller]));
+  ControllerSystem() : super(new Aspect.forAllOf([Controller, Acceleration]));
 
   @override
   void processEntity(Entity entity) {
-    final c = cm[entity];
+    final a = am[entity];
     if (up) {
-      c.up = true;
+      a.y = -1.0;
     } else if (down) {
-      c.down = true;
+      a.y = 1.0;
     }
 
     if (left) {
-      c.left = true;
+      a.x = -1.0;
     } else if (right) {
-      c.right = true;
+      a.x = 1.0;
     }
   }
 }
