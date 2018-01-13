@@ -47,3 +47,31 @@ class BoatRenderingSystem extends EntityProcessingSystem {
           p.x * cm.width, p.y * cm.height, cm.width * 0.05, cm.height * 0.03);
   }
 }
+
+class DiverRenderingSystem extends EntityProcessingSystem {
+  Mapper<Position> pm;
+  CameraManager cm;
+  CanvasRenderingContext2D ctx;
+  DiverRenderingSystem(this.ctx)
+      : super(new Aspect.forAllOf([Position, Diver]));
+
+  @override
+  void initialize() {
+    cm = world.getManager(CameraManager);
+  }
+
+  @override
+  void processEntity(Entity entity) {
+    final p = pm[entity];
+    ctx
+      ..fillStyle = 'black'
+      ..fillRect(
+          p.x * cm.width, p.y * cm.height, cm.width * 0.025, cm.height * 0.015)
+      ..fillStyle = 'yellow'
+      ..fillRect(
+          p.x * cm.width + 0.005 * cm.width,
+          p.y * cm.height - 0.004 * cm.height,
+          cm.width * 0.0075,
+          cm.height * 0.005);
+  }
+}

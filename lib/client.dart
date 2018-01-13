@@ -15,7 +15,7 @@ class Game extends GameBase {
 
   @override
   void createEntities() {
-    addEntity([new Controller()]);
+    addEntity([new Controller(), new Position(0.52, 0.1), new Diver()]);
     addEntity([new Boat(), new Position(0.5, 0.08)]);
   }
 
@@ -28,6 +28,7 @@ class Game extends GameBase {
         new CanvasCleaningSystem(canvas),
         new BackgroundRenderingSystem(ctx),
         new BoatRenderingSystem(ctx),
+        new DiverRenderingSystem(ctx),
         new FpsRenderingSystem(ctx, fillStyle: 'black'),
       ],
       GameBase.physics: [

@@ -8,3 +8,5 @@ class Controller extends Component {
 }
 
 class Boat extends Component {}
+
+class Diver extends Component {}
