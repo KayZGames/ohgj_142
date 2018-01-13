@@ -1,0 +1,23 @@
+name: ohgj_142
+description: A ohgj_142 game
+publish_to: none
+dependencies:
+  browser: ^0.10.0+2
+  dartemis:
+    git:
+      url: git://github.com/denniskaselow/dartemis.git
+      ref: feature/ddc
+  dartemis_transformer:
+    git:
+      url: git://github.com/denniskaselow/dartemis_transformer.git
+      ref: feature/ddc
+  gamedev_helpers:
+    git:
+      url: git://github.com/kayzgames/gamedev_helpers.git
+      ref: feature/ddc
+  dart_to_js_script_rewriter: ^1.0.3
+transformers:
+- dart_to_js_script_rewriter
+- dartemis_transformer:
+    additionalLibraries:
+    - gamedev_helpers/gamedev_helpers.dart
