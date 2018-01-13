@@ -102,3 +102,51 @@ class WaterDragSystem extends EntityProcessingSystem {
     }
   }
 }
+
+class TreasureCollectionSystem extends EntityProcessingSystem {
+  Mapper<Position> pm;
+  Mapper<Treasure> treasureMapper;
+  TagManager tm;
+
+  TreasureCollectionSystem()
+      : super(new Aspect.forAllOf([Treasure, Position])..exclude([Controller]));
+
+  @override
+  void processEntity(Entity entity) {
+    final playerEntity = tm.getEntity(playerTag);
+    final pp = pm[playerEntity];
+    final tp = pm[entity];
+    if (pp.y >= 0.88 &&
+        (pp.x - tp.x).abs() < 0.01 &&
+        !treasureMapper.has(playerEntity)) {
+      playerEntity
+        ..addComponent(new Treasure())
+        ..changedInWorld();
+      entity.deleteFromWorld();
+    }
+  }
+}
+
+class TreasureDeliveringSystem extends EntityProcessingSystem {
+  Mapper<Position> pm;
+  Mapper<Treasure> treasureMapper;
+  TagManager tm;
+
+  TreasureDeliveringSystem() : super(new Aspect.forAllOf([Boat, Position]));
+
+  @override
+  void processEntity(Entity entity) {
+    final playerEntity = tm.getEntity(playerTag);
+    final pp = pm[playerEntity];
+    final tp = pm[entity];
+    if (pp.y <= 0.12 &&
+        (pp.x - tp.x).abs() < 0.01 &&
+        treasureMapper.has(playerEntity)) {
+      playerEntity
+        ..removeComponent(Treasure)
+        ..changedInWorld();
+      world.createAndAddEntity(
+          [new Treasure(), new Position(random.nextDouble(), 0.9)]);
+    }
+  }
+}

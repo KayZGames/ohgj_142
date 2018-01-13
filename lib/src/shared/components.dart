@@ -20,3 +20,5 @@ class Velocity extends Component {
   double x, y;
   Velocity(this.x, this.y);
 }
+
+class Treasure extends Component {}

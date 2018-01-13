@@ -69,9 +69,32 @@ class DiverRenderingSystem extends EntityProcessingSystem {
           p.x * cm.width, p.y * cm.height, cm.width * 0.025, cm.height * 0.015)
       ..fillStyle = 'yellow'
       ..fillRect(
-          p.x * cm.width + 0.005 * cm.width,
+          p.x * cm.width + 0.015 * cm.width,
           p.y * cm.height - 0.004 * cm.height,
           cm.width * 0.0075,
           cm.height * 0.005);
+  }
+}
+
+
+class TreasureRenderingSystem extends EntityProcessingSystem {
+  Mapper<Position> pm;
+  CameraManager cm;
+  CanvasRenderingContext2D ctx;
+
+  TreasureRenderingSystem(this.ctx) : super(new Aspect.forAllOf([Position, Treasure]));
+
+  @override
+  void initialize() {
+    cm = world.getManager(CameraManager);
+  }
+
+  @override
+  void processEntity(Entity entity) {
+    final p = pm[entity];
+    ctx
+      ..fillStyle = 'yellow'
+      ..fillRect(
+          p.x * cm.width, p.y * cm.height, cm.width * 0.01, cm.height * 0.01);
   }
 }
