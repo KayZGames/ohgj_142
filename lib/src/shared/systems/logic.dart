@@ -10,11 +10,6 @@ class AccelerationSystem extends EntityProcessingSystem {
   AccelerationSystem() : super(new Aspect.forAllOf([Acceleration, Velocity]));
 
   @override
-  void initialize() {
-    cm = world.getManager(CameraManager);
-  }
-
-  @override
   void processEntity(Entity entity) {
     final a = am[entity];
     final v = vm[entity];
@@ -29,11 +24,6 @@ class MovementSystem extends EntityProcessingSystem {
   CameraManager cm;
 
   MovementSystem() : super(new Aspect.forAllOf([Velocity, Position]));
-
-  @override
-  void initialize() {
-    cm = world.getManager(CameraManager);
-  }
 
   @override
   void processEntity(Entity entity) {

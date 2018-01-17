@@ -10,11 +10,6 @@ class BackgroundRenderingSystem extends VoidEntitySystem {
   BackgroundRenderingSystem(this.ctx);
 
   @override
-  void initialize() {
-    cm = world.getManager(CameraManager);
-  }
-
-  @override
   void processSystem() {
     ctx
       ..fillStyle = 'cyan'
@@ -34,11 +29,6 @@ class BoatRenderingSystem extends EntityProcessingSystem {
   BoatRenderingSystem(this.ctx) : super(new Aspect.forAllOf([Position, Boat]));
 
   @override
-  void initialize() {
-    cm = world.getManager(CameraManager);
-  }
-
-  @override
   void processEntity(Entity entity) {
     final p = pm[entity];
     ctx
@@ -54,11 +44,6 @@ class DiverRenderingSystem extends EntityProcessingSystem {
   CanvasRenderingContext2D ctx;
   DiverRenderingSystem(this.ctx)
       : super(new Aspect.forAllOf([Position, Diver]));
-
-  @override
-  void initialize() {
-    cm = world.getManager(CameraManager);
-  }
 
   @override
   void processEntity(Entity entity) {
@@ -83,11 +68,6 @@ class TreasureRenderingSystem extends EntityProcessingSystem {
 
   TreasureRenderingSystem(this.ctx)
       : super(new Aspect.forAllOf([Position, Treasure]));
-
-  @override
-  void initialize() {
-    cm = world.getManager(CameraManager);
-  }
 
   @override
   void processEntity(Entity entity) {

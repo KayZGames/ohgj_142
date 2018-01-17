@@ -1,6 +1,5 @@
 library client;
 
-import 'package:ohgj_142/shared.dart';
 import 'package:gamedev_helpers/gamedev_helpers.dart';
 import 'package:ohgj_142/src/shared/components.dart';
 import 'package:ohgj_142/src/shared/systems/logic.dart';
